@@ -23,10 +23,11 @@ pub mod department_sorter {
             "\n\nWelcome to {}®",
             "Department Sorter".underline().bright_green()
         );
-        print_help(None);
 
         let mut department_runner_instance = DepartmentSorter::new();
         let mut continue_run = true;
+
+        print_help(None);
 
         while continue_run {
             let mut input = String::new();
@@ -43,18 +44,21 @@ pub mod department_sorter {
         if error_txt.is_some() {
             println!("{}", error_txt.unwrap().yellow());
         }
-        println!("Here is what you can do:");
+        println!("\nHere is what you can do:");
         println!(
-            "\t{}: You can add employees to departments | eg: \"Add Sally to Engineering",
-            "Add".blue()
+            "\t{}: You can add employees to departments | eg: {}",
+            "Add".blue(),
+            "\"Add Sally to Engineering\"".yellow().italic(),
         );
         println!(
-            "\t{}: You can remove employees from departments | eg: \"Remove Bob from HR",
-            "Remove".blue()
+            "\t{}: You can remove employees from departments | eg: {}",
+            "Remove".blue(),
+            "\"Remove Bob from HR\"".yellow().italic(),
         );
         println!(
-            "\t{}: You can list employees from departments | eg: \"List Sales",
-            "List".blue()
+            "\t{}: You can list employees from departments | eg: {}",
+            "List".blue(),
+            "\"List Sales\"".yellow().italic(),
         );
         println!(
             "\t{}: You can save your data to a localized file.",
@@ -144,8 +148,8 @@ pub mod department_sorter {
                         Ok(valid_store) => {
                             println!(
                                 "{} {}",
-                                "Restored data successfully from".green(),
-                                SAVE_FILE_PATH.yellow()
+                                "Restored data successfully from".black().italic(),
+                                SAVE_FILE_PATH.underline()
                             );
                             return valid_store;
                         }
